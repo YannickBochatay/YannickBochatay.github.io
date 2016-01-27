@@ -108,7 +108,7 @@
     /**
      * Evenement pour déclencher le drag&drop
      */
-    Draggable.prototype.event = 'vmousedown';
+    Draggable.prototype.event = 'tapstart';
     /**
      * Restriction à un bouton de la souris (1 bouton gauche, 2 bouton du milieu, 3 bouton droit)
      */
@@ -502,8 +502,8 @@
             if (hasChanged && that.type!=='transform' && that._shape === 'noAttribute') jNode.mtx2attrs({keepRotation:that.keepRotation});
             
             new JSYG(document).off({
-                'vmousemove':moveFct,
-                'vmouseup':remove
+                'tapmove':moveFct,
+                'tapend':remove
             });
             
             if (hasChanged) that.trigger('dragend',that.node,e);
@@ -511,8 +511,8 @@
         }
         
         new JSYG(document).on({
-            'vmousemove':moveFct,
-            'vmouseup':remove
+            'tapmove':moveFct,
+            'tapend':remove
         });
         
         this.trigger('start',this.node,e);
@@ -533,7 +533,7 @@
         that = this;
         
         function start(e) {
-            //if (that.eventWhich && e.which != that.eventWhich) return;
+            if (that.eventWhich && e.which != null && e.which != that.eventWhich) return;
             that.start(e);
         }
         
