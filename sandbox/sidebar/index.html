@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JSYG Full Editor</title>
+        
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+        <link rel="stylesheet" href="sidebar.css"/>
+        <style>
+            #showMenu {
+                display:inline-block;
+                font-size:1.5em;
+                padding:10px;
+                color:black;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="st-container" class="st-container">
+            
+            <nav class="st-menu st-effect" id="menuPrincipal">
+                
+                <ul>
+                    
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-lg fa-home"></i>
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#maquetteur">
+                            <i class="fa fa-lg fa-edit"></i>
+                            Maquettage
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-lg fa-envelope"></i>
+                            Suivi des clients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#bug">
+                            <i class="fa fa-lg fa-bug"></i>
+                            Signaler un bug
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-lg fa-sign-out"></i>
+                            Déconnexion
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </nav>
+            
+            <div class="st-pusher">
+                
+                <div class="st-content">
+                    
+                    <div class="st-content-inner">
+                        
+                        <a href="#" id="showMenu" role="button" title="Afficher le menu">
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </a>
+                        
+                        <div class="row">
+                            
+                            <div class="col-xs-8">
+                            <img src="firefox.svg"></svg>
+                            </div>
+                            <div class="col-xs-4">
+                            <pre>** from https://github.com/codrops/SidebarTransitions
+* 
+* sidebarEffects.js v1.0.0
+* http://www.codrops.com
+*
+* Licensed under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 
+* Copyright 2013, Codrops
+* http://www.codrops.com
+*/</pre>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script>
+            $(function() {
+                
+                "use strict";
+               
+                
+                /** from https://github.com/codrops/SidebarTransitions
+                 * 
+                 * sidebarEffects.js v1.0.0
+                 * http://www.codrops.com
+                 *
+                 * Licensed under the MIT license.
+                 * http://www.opensource.org/licenses/mit-license.php
+                 * 
+                 * Copyright 2013, Codrops
+                 * http://www.codrops.com
+                 */
+                (function initMenu() {
+                
+                    var container = document.querySelector(".st-container");
+                   
+                    function bodyClickFn(e) {
+                        if (!$(e.target).parents('.st-menu').length) hideMenu();
+                    }
+			
+                    function showMenu() {
+						
+                        $("body,html,.st-content").addClass("st-open");
+			
+                        container.className = 'st-container';
+			
+                        container.classList.add('st-effect');
+									
+                        window.setTimeout(function() { container.classList.add('st-menu-open'); },25);
+			
+                        document.addEventListener("click",bodyClickFn);
+                    }
+		
+                    function hideMenu() {
+			
+                        document.removeEventListener("click",bodyClickFn);
+			
+                        container.classList.remove('st-menu-open');
+                    }
+		
+                    $("#showMenu").on("click",function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        showMenu();
+                    });
+			
+                    container.addEventListener("transitionend",function() {
+				
+                        if (this.classList.contains('st-menu-open')) return;
+				
+                        $("body,html,.st-content").removeClass("st-open");
+                    });
+                
+                }());
+            });            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Touch events</title>
+        <style>
+            html,body {
+                margin:0;
+                padding:0;
+            }
+            body {
+                height:100vh;
+                width:100vw;
+                overflow:hidden;
+            }
+            
+            
+            path {
+                fill:none;
+                stroke:black;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <svg width="100%" height="100%">
+            <rect x="0" y="0" width="300" height="200"/>
+        </svg>
+            
+        <script>
+            
+            document.body.addEventListener('touchmove', function(e) { e.preventDefault(); });
+            
+            document.querySelector("rect").addEventListener("touchmove",function(e) {
+                
+                var touch = e.targetTouches[0];
+                
+                this.setAttribute('x',touch.pageX);
+                this.setAttribute('y',touch.pageY);
+            });
+            
+        </script>
+    </body>
+</html>
