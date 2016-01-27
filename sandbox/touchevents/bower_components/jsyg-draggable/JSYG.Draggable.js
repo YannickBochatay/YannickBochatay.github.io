@@ -108,7 +108,7 @@
     /**
      * Evenement pour déclencher le drag&drop
      */
-    Draggable.prototype.event = 'touchstart mousedown';
+    Draggable.prototype.event = 'vmousedown';
     /**
      * Restriction à un bouton de la souris (1 bouton gauche, 2 bouton du milieu, 3 bouton droit)
      */
@@ -192,12 +192,10 @@
     Draggable.prototype.enabled = false;
     
     /**
-     * Démarrage du drag&drop. méthode exécutée sur l'événement "mousedown" ou "touchstart".
+     * Démarrage du drag&drop.
      * @param {Object} e : objet Event.
      */
     Draggable.prototype.start = function(e) {
-        
-        var eOri = e.originalEvent;
         
         e.preventDefault();
         
@@ -212,12 +210,12 @@
             this.maxRight = dimParent.width + this.bounds;
             this.maxBottom = dimParent.height + this.bounds;
         }
-                
+        
         var that = this,
         isSvg = jNode.isSVG(),
         mtxScreenInitInv = jNode.getMtx("screen").inverse(),
         mtxInit = jNode.getMtx(),
-        mouseInit = new JSYG.Vect(eOri.clientX,eOri.clientY).mtx(mtxScreenInitInv),
+        posInit = new JSYG.Vect(e.clientX,e.clientY).mtx(mtxScreenInitInv),
         dimInit = jNode.getDim(),
         mtxScreenParent = parent.getMtx('screen'),
         cursor,
@@ -263,9 +261,7 @@
             })();
         }
         
-        function mousemoveFct(e) {
-            
-            var eOri = e.originalEvent;
+        function moveFct(e) {
             
             if (!triggerDragStart) {
                 that.trigger('dragstart',that.node,e);
@@ -280,7 +276,7 @@
             mtx,dim,rect,
             x,y,
             pt1,pt2,
-            mouse,
+            pos,
             reachedX=false,
             reachedY=false,
             dimFromWin,
@@ -304,13 +300,13 @@
                 if (!oldOk) guides.trigger('reach',that.node,e);
             }
             
-            mouse = new JSYG.Vect(eOri.clientX,eOri.clientY).mtx(mtxScreenInitInv);
+            pos = new JSYG.Vect(e.clientX,e.clientY).mtx(mtxScreenInitInv);
             
-            mtx = mtxInit.translate(that.horizontal ? mouse.x - mouseInit.x : 0, that.vertical ? mouse.y - mouseInit.y : 0);
+            mtx = mtxInit.translate(that.horizontal ? pos.x - posInit.x : 0, that.vertical ? pos.y - posInit.y : 0);
             
             dim = {
-                x : !that.horizontal ? dimInit.x : dimInit.x + mouse.x - mouseInit.x,
-                y : !that.vertical ? dimInit.y : dimInit.y + mouse.y - mouseInit.y
+                x : !that.horizontal ? dimInit.x : dimInit.x + pos.x - posInit.x,
+                y : !that.vertical ? dimInit.y : dimInit.y + pos.y - posInit.y
             };
             
             if (guides) {
@@ -428,7 +424,7 @@
                     if (reachedX && reachedY) break;
                 }
                 
-                if (oldOk && !guides.ok) guides.trigger('leave',that.node,eOri);
+                if (oldOk && !guides.ok) guides.trigger('leave',that.node,e);
             }
             
             if (that.autoScroll) {
@@ -449,7 +445,7 @@
             }
             
             hasChanged = true;
-            that.trigger('drag',that.node,eOri);
+            that.trigger('drag',that.node,e);
         };
         
         function remove(e) {
@@ -465,7 +461,7 @@
                 
                 if (guides.className) jNode.removeClass(guides.className);
                 if (that.className) jNode.removeClass(that.className);
-                if (guides.ok) guides.trigger('success',that.node,eOri);
+                if (guides.ok) guides.trigger('success',that.node,e);
                 else if (guides.require) {
                     
                     var to;
@@ -496,7 +492,7 @@
                                 /*if (backupTransf) {
 									jNode.transfOrigin(backupTransf);
 								}*/
-                                guides.trigger('fail',that.node,eOri);
+                                guides.trigger('fail',that.node,e);
                             }
                         });
                     }
@@ -506,20 +502,20 @@
             if (hasChanged && that.type!=='transform' && that._shape === 'noAttribute') jNode.mtx2attrs({keepRotation:that.keepRotation});
             
             new JSYG(document).off({
-                'mousemove touchmove':mousemoveFct,
-                'mouseup touchend':remove
+                'vmousemove':moveFct,
+                'vmouseup':remove
             });
             
-            if (hasChanged) that.trigger('dragend',that.node,eOri);
-            that.trigger('end',that.node,eOri);
+            if (hasChanged) that.trigger('dragend',that.node,e);
+            that.trigger('end',that.node,e);
         }
         
         new JSYG(document).on({
-            'mousemove touchmove':mousemoveFct,
-            'mouseup touchend':remove
+            'vmousemove':moveFct,
+            'vmouseup':remove
         });
         
-        this.trigger('start',this.node,eOri);
+        this.trigger('start',this.node,e);
     };
     
     /**
