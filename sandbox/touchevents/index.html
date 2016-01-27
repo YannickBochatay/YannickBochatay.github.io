@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <!--<link rel="apple-touch-icon" href="/static/images/identity/HTML5_Badge_64.png" />
+        <link rel="apple-touch-icon-precomposed" href="/static/images/identity/HTML5_Badge_64.png" />-->
         <title>Touch events</title>
         <style>
             html,body {
@@ -10,7 +12,7 @@
                 padding:0;
             }
             body {
-                height:100vh;
+                height:90vh;
                 width:100vw;
                 overflow:hidden;
             }
@@ -27,17 +29,21 @@
         <svg width="100%" height="100%">
             <rect x="0" y="0" width="300" height="200"/>
         </svg>
-            
+        <pre id="infos"></pre>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/jsyg/JSYG.js"></script>
+        <script src="bower_components/jsyg-draggable/JSYG.Draggable.js"></script>
+        <script src="others/detectMobileBrowsers.js"></script>
+        <!--<script src="others/phantom-limb.js"></script>-->
         <script>
             
-            document.body.addEventListener('touchmove', function(e) { e.preventDefault(); });
+            var infos = $('#infos');
             
-            document.querySelector("rect").addEventListener("touchmove",function(e) {
-                
-                var touch = e.targetTouches[0];
-                
-                this.setAttribute('x',touch.pageX);
-                this.setAttribute('y',touch.pageY);
+            infos.append("isMobile : " + $.browser.mobile+'\n');
+            
+            new JSYG('rect').draggable({
+                onstart:function() { infos.append("start ");},
+                onend:function() { infos.append("end "); }
             });
             
         </script>
