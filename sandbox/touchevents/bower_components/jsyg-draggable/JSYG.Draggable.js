@@ -533,7 +533,7 @@
         that = this;
         
         function start(e) {
-            if (that.eventWhich && e.which != that.eventWhich) return;
+            //if (that.eventWhich && e.which != that.eventWhich) return;
             that.start(e);
         }
         
