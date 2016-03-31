@@ -82,7 +82,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "builds"),
     filename: 'bundle.js',
-    publicPath: '/sandbox/jsyg-react/'
+    publicPath: '/sandbox/jsyg-react/builds/'
   },
 
   debug: !production,
