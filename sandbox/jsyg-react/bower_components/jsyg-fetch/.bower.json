@@ -1,0 +1,50 @@
+{
+  "name": "jsyg-fetch",
+  "authors": [
+    "Yannick Bochatay"
+  ],
+  "description": "Fetch polyfill with some extra features",
+  "main": "JSYG.fetch.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "dependencies": {
+    "fetch": "latest",
+    "es6-promise": "latest"
+  },
+  "devDependencies": {
+    "qunit": "latest",
+    "requirejs": "latest",
+    "jsyg-wrapper": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YannickBochatay/JSYG.fetch.git"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "tests",
+    "bower_components",
+    "nbproject"
+  ],
+  "keywords": [
+    "svg",
+    "jsyg",
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "homepage": "https://github.com/YannickBochatay/JSYG.fetch",
+  "version": "0.0.7",
+  "_release": "0.0.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.7",
+    "commit": "ba4a6e66831fd2abdaa83e1358bb787ce49d2759"
+  },
+  "_source": "git://github.com/YannickBochatay/JSYG.fetch.git",
+  "_target": "*",
+  "_originalSource": "jsyg-fetch"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "jsyg-pathdrawer",
+  "authors": [
+    "Yannick Bochatay"
+  ],
+  "description": "JSYG plugin for drawing interactive svg paths",
+  "main": "JSYG.PathDrawer.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "dependencies": {
+    "jsyg-path": "latest"
+  },
+  "devDependencies": {
+    "qunit": "latest",
+    "requirejs": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YannickBochatay/JSYG.PathDrawer.git"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "tests",
+    "bower_components",
+    "nbproject"
+  ],
+  "keywords": [
+    "svg",
+    "jsyg",
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "homepage": "https://github.com/YannickBochatay/JSYG.PathDrawer",
+  "version": "0.4.2",
+  "_release": "0.4.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.4.2",
+    "commit": "747397028b6e4314a8da01804044609041a5d107"
+  },
+  "_source": "git://github.com/YannickBochatay/JSYG.PathDrawer.git",
+  "_target": "*",
+  "_originalSource": "jsyg-pathdrawer"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "my-jsyg-app",
+  "description": "my awesome jsyg app",
+  "main": "index.html",
+  "authors": [
+    "Yannick Bochatay"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "webpack",
+    "react",
+    "material",
+    "es6"
+  ],
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+
+  }
+}
