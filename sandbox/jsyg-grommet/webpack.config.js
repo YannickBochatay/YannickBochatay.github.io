@@ -80,7 +80,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "builds"),
     filename: 'bundle.js',
-    publicPath: '/jsyg-grommet/builds/'
+    publicPath: '/sandbox/jsyg-grommet/builds/'
   },
 
   debug: !production,
