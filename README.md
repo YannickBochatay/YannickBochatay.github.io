@@ -7,6 +7,8 @@ My sandbox
 
 [sidebar](http://yannickbochatay.github.io/sandbox/sidebar/)
 
-[jsyg-react](http://yannickbochatay.github.io/sandbox/jsyg-react/)
+[boilerplate with react](http://yannickbochatay.github.io/sandbox/jsyg-react/)
+
+[boilerplate with grommet](http://yannickbochatay.github.io/sandbox/jsyg-grommet/)
 
 [weather-fronts](http://yannickbochatay.github.io/sandbox/weatherfronts/)
